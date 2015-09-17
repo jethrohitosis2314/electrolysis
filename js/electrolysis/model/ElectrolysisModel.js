@@ -4,26 +4,35 @@
  *
  * @author prateek
  */
-define( function( require ) {
-  'use strict';
+define(function (require) {
+    'use strict';
 
-  // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var PropertySet = require( 'AXON/PropertySet' );
+    // modules
+    var inherit = require('PHET_CORE/inherit');
+    var PropertySet = require('AXON/PropertySet');
+    var CircuitModel = require('ELECTROLYSIS/electrolysis/model/CircuitModel');
+    var LiquidModel = require('ELECTROLYSIS/electrolysis/model/LiquidModel');
+    var RackModel = require('ELECTROLYSIS/electrolysis/model/RackModel');
 
-  /**
-   * @constructor
-   */
-  function ElectrolysisModel() {
+    /**
+     * @constructor
+     */
+    function ElectrolysisModel() {
+        PropertySet.call(this, {});
 
-    PropertySet.call( this, {} );
-  }
-
-  return inherit( PropertySet, ElectrolysisModel, {
-
-    //TODO Called by the animation loop. Optional, so if your model has no animation, please delete this.
-    step: function( dt ) {
-      //TODO Handle model animation here.
+        this.circuitModel = new CircuitModel();
+        this.liquids = [
+                new LiquidModel("Water", '#fff', false),
+                new LiquidModel("Salt Water", '#ddd', true)
+        ];
+        this.rack = new RackModel();
     }
-  } );
-} );
+
+    return inherit(PropertySet, ElectrolysisModel, {
+
+        //TODO Called by the animation loop. Optional, so if your model has no animation, please delete this.
+        step: function (dt) {
+            //TODO Handle model animation here.
+        }
+    });
+});
