@@ -13,7 +13,7 @@ define(function(require){
         var rectangleNode = new Rectangle(200,300,150,100,0,0,{fill: '#000', lineWidth: 0});
         this.addChild(rectangleNode);
         model.electrolyteProperty.link(function(liquid) {
-            rectangleNode.fill = liquid ? liquid.color : 'transparent';
+            rectangleNode.fill = liquid ? liquid.color : 'red';
         }.bind(this));
 
         var image = new Image(circuitImage, {x: 0, y: 0});
