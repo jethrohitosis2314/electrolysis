@@ -17,7 +17,6 @@ define(function (require) {
     var ModelViewTransform2 = require('PHETCOMMON/view/ModelViewTransform2');
     var Vector2 = require('DOT/Vector2');
     var CircuitNode = require('ELECTROLYSIS/electrolysis/view/CircuitNode');
-    var LiquidNode = require('ELECTROLYSIS/electrolysis/view/LiquidNode');
     var RackNode = require('ELECTROLYSIS/electrolysis/view/RackNode');
 
     /**
@@ -41,9 +40,6 @@ define(function (require) {
         this.addChild(new CircuitNode(electrolysisModel.circuitModel, modelViewTransform));
 
         this.addChild(new RackNode(electrolysisModel.rack, modelViewTransform));
-        electrolysisModel.liquids.forEach(function(liquid) {
-            this.addChild(new LiquidNode(liquid, modelViewTransform));
-        }.bind(this));
 
         // Reset All button
         var resetAllButton = new ResetAllButton({
