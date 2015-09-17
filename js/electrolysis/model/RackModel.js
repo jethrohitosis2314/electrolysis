@@ -11,7 +11,7 @@ define(function(require) {
         this.location = new Vector2(700, 100);
 
         this.liquids = [
-            new LiquidModel({name: "Water", color: '#fff', conductor: false, location: new Vector2(60, 55)}),
+            new LiquidModel({name: "Water", color: 'red', conductor: false, location: new Vector2(60, 55)}),
             new LiquidModel({name: "Salt Water", color: '#ddd', conductor: true, location: new Vector2(100, 55)})
         ];
     }
