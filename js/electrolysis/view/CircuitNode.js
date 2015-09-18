@@ -6,6 +6,7 @@ define(function(require){
     var Rectangle = require('SCENERY/nodes/Rectangle');
     var Circle = require('SCENERY/nodes/Circle');
     var DownUpListener = require( 'SCENERY/input/DownUpListener' );
+    var RadialGradient = require( 'SCENERY/util/RadialGradient' );
 
     var circuitImage = require('image!ELECTROLYSIS/circuit.svg');
 
@@ -29,6 +30,14 @@ define(function(require){
         model.openProperty.link(function(open) {
             key.fill = open ? '#fff' : '#000';
         });
+
+        var glow = new Circle(40, {x: 73, y: 20});
+        glow.fill = new RadialGradient( 0, 0, 0, 0, 0, 40 )
+                .addColorStop( 0, 'rgba( 255, 255, 0, 1 )' )
+                .addColorStop( 0.9, 'rgba( 255, 255, 0, 0 )' );
+        this.addChild(glow);
+
+        model.bulbGlowsProperty.linkAttribute(glow, 'visible');
 
         var image = new Image(circuitImage, {x: 0, y: 0});
         this.addChild(image);

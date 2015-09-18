@@ -8,7 +8,7 @@ define( function(require) {
         PropertySet.call(this, {open: true, electrolyte: null, bulbGlows: false});
 
         var checkCurrentFlow = function() {
-            if( this.open && this.electrolyte && this.electrolyte.conductor) {
+            if( !this.open && this.electrolyte && this.electrolyte.conductor) {
                 this.bulbGlowsProperty.set(true);
             } else {
                 this.bulbGlowsProperty.set(false);
