@@ -21,6 +21,12 @@ define(function (require) {
 
         this.circuitModel = new CircuitModel();
         this.rack = new RackModel();
+
+        this.tryPourLiquid = function(model) {
+            if(this.circuitModel.collidesWith(model)) {
+                this.circuitModel.onReceiveDrop(model);
+            }
+        }.bind(this);
     }
 
     return inherit(PropertySet, ElectrolysisModel, {

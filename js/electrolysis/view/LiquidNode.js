@@ -38,6 +38,7 @@ define(function (require) {
             }.bind(this),
 
             end: function () {
+                ES.model.tryPourLiquid(model);
                 model.reset();
             }.bind(this)
         }));

@@ -25,8 +25,10 @@ define( function( require ) {
     //If there are multiple screens, then the icon must be provided here.
     var icon = null;
 
+    window.ES = {};
+    ES.model = new ElectrolysisModel();
     Screen.call( this, electrolysisSimString, icon,
-      function() { return new ElectrolysisModel(); },
+      function() { return ES.model; },
       function( model ) { return new ElectrolysisScreenView( model ); },
       { backgroundColor: 'white' }
     );
