@@ -12,6 +12,8 @@ define(function(require) {
     var ElectrolysisScreenView = require('ELECTROLYSIS/electrolysis/view/ElectrolysisScreenView');
     var inherit = require('PHET_CORE/inherit');
     var Screen = require('JOIST/Screen');
+    var Image = require('SCENERY/nodes/Image');
+    var elImage = require("image!ELECTROLYSIS/el.png")
 
     // strings
     var electrolysisSimString = require('string!ELECTROLYSIS/electrolysis.name');
@@ -23,7 +25,7 @@ define(function(require) {
 
         //If this is a single-screen sim, then no icon is necessary.
         //If there are multiple screens, then the icon must be provided here.
-        var icon = null;
+        var icon = new Image(elImage);
 
         window.ES = {};
         ES.model = new ElectrolysisModel();

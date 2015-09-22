@@ -10,6 +10,7 @@ define( function( require ) {
 
   // modules
   var ElectrolysisScreen = require( 'ELECTROLYSIS/electrolysis/ElectrolysisScreen' );
+  var ElectroplatingScreen = require( 'ELECTROLYSIS/electrolysis/ElectroplatingScreen');
   var Sim = require( 'JOIST/Sim' );
   var SimLauncher = require( 'JOIST/SimLauncher' );
 
@@ -36,7 +37,7 @@ define( function( require ) {
   }
 
   SimLauncher.launch( function() {
-    var sim = new Sim( simTitle, [ new ElectrolysisScreen() ], simOptions );
+    var sim = new Sim( simTitle, [ new ElectrolysisScreen(), new ElectroplatingScreen() ], simOptions );
     sim.start();
   } );
 } );
