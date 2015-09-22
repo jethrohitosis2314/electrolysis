@@ -31,8 +31,6 @@ define(function(require) {
                 this.removeChild(text);
             }
 
-            console.log(text);
-
             text = new Text(model.liquidName + " is" + (model.conductor ? " not" : "") + " a conductor", {
                 font: new PhetFont(model.fontSize),
                 fill: model.fontColor,

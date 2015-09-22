@@ -4,12 +4,12 @@ define(function(require) {
     var Dimension2 = require('DOT/Dimension2');
     var Vector2 = require('DOT/Vector2');
 
-    function CallOutModel(options) {
-        PropertySet.call(this, _.extend({
+    function CallOutModel() {
+        PropertySet.call(this, {
             liquidName: '',
             visible: false,
-            conductor: null
-        }, options));
+            conductor: false
+        });
 
         this.size = new Dimension2(320, 60);
         this.location = new Vector2(200, 30);
