@@ -13,24 +13,17 @@ define(function(require) {
         });
 
         var checkCurrentFlow = function() {
-            if (this.check() && this.electrolyte.conductor) {
-                this.bulbGlowsProperty.set(true);
-            } else {
-                this.bulbGlowsProperty.set(false);
-            }
+            this.bulbGlowsProperty.set(this.check() && this.electrolyte.conductor);
         }.bind(this);
 
-        this.check = function(){
-            if (!this.open && this.electrolyte) {
-                return true;
-            } else {
-                return false;
-            }
+        this.check = function() {
+            return !this.open && this.electrolyte;
         }.bind(this);
 
         this.openProperty.link(function() {
             checkCurrentFlow();
         });
+
         this.electrolyteProperty.link(function() {
             checkCurrentFlow();
         });

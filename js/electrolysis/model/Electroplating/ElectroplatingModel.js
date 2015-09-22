@@ -1,16 +1,12 @@
 define(function(require) {
     'use strict';
 
-    // modules
     var inherit = require('PHET_CORE/inherit');
     var PropertySet = require('AXON/PropertySet');
     var CircuitModel = require('ELECTROLYSIS/electrolysis/model/CircuitModel');
     var RackModel = require('ELECTROLYSIS/electrolysis/model/RackModel');
     var CallOutModel = require('ELECTROLYSIS/electrolysis/model/CallOutModel');
 
-    /**
-     * @constructor
-     */
     function ElectrolysisModel() {
         PropertySet.call(this, {});
 
@@ -25,11 +21,7 @@ define(function(require) {
         }.bind(this);
 
         var callOut = function() {
-            if (this.circuitModel.check()) {
-                this.callOutModel.visibleProperty.set(true);
-            } else {
-                this.callOutModel.visibleProperty.set(false);
-            }
+            this.callOutModel.visibleProperty.set(this.circuitModel.check());
         }.bind(this);
 
         this.circuitModel.electrolyteProperty.link(function(electrolyte) {
@@ -45,10 +37,6 @@ define(function(require) {
     }
 
     return inherit(PropertySet, ElectrolysisModel, {
-
-        //TODO Called by the animation loop. Optional, so if your model has no animation, please delete this.
-        step: function(dt) {
-            //TODO Handle model animation here.
-        }
+        step: function(dt) {}
     });
 });
