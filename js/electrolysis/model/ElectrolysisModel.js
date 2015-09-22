@@ -40,14 +40,7 @@ define(function(require) {
         }.bind(this));
 
         this.circuitModel.switchedOnProperty.link(function(on) {
-
-            if (on) {
-                console.log("Switched on");
-                callOut();
-            } else {
-                console.log("Switched off");
-                callOut();
-            }
+            callOut();
         }.bind(this));
     }
 
