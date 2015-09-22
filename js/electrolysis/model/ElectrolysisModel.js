@@ -29,6 +29,32 @@ define(function(require) {
                 this.circuitModel.onReceiveDrop(model);
             }
         }.bind(this);
+
+        var callOut = function(){
+            if(this.circuitModel.check()){
+                this.callOutModel.visibleProperty.set(true);
+            } else{
+                this.callOutModel.visibleProperty.set(false);
+            }
+        }.bind(this);
+
+        this.circuitModel.electrolyteProperty.link(function(electrolyte) {
+            if (!electrolyte) return;
+            this.callOutModel.liquidNameProperty.set(electrolyte.name);
+            this.callOutModel.conductorProperty.set(electrolyte.conductor);
+            console.log("ElectrolyteProperty changed");
+            callOut();
+        }.bind(this));
+
+        this.circuitModel.switchedOnProperty.link(function(on){
+            if(on){
+                console.log("Switched on");
+                callOut();
+            } else {
+                console.log("Switched off");
+                callOut();
+            }
+        }.bind(this));
     }
 
     return inherit(PropertySet, ElectrolysisModel, {

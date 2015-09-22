@@ -12,19 +12,36 @@ define(function(require) {
             y: model.location.y
         });
 
-        this.addChild(new Rectangle(0, 0, model.size.width, model.size.height, model.arcRadius, model.arcRadius, {
+        var textContainer = new Rectangle(0, 0, model.size.width, model.size.height, model.arcRadius, model.arcRadius, {
             fill: model.fillColor,
             lineWidth: model.lineWidth,
             stroke: model.stroke,
-            visible: model.visible
-        }));
+            visible: true
+        });
 
-        this.addChild(new Text(model.text, {
-            font: new PhetFont(model.fontSize),
-            fill: model.fontColor,
-            x: 10,
-            y: model.size.height - 23
-        }));
+        model.visibleProperty.link(function(visible) {
+            this.visible = visible;
+        }.bind(this));
+
+        this.addChild(textContainer);
+
+        var text = null;
+        model.liquidNameProperty.link(function() {
+            if (text) {
+                this.removeChild(text);
+            }
+
+            console.log(text);
+
+            text = new Text(model.liquidName + " is" + (model.conductor ? " not" : "") + " a conductor", {
+                font: new PhetFont(model.fontSize),
+                fill: model.fontColor,
+                x: 10,
+                y: model.size.height - 23
+            });
+
+            this.addChild(text);
+        }.bind(this));
     }
 
     return inherit(Node, CallOutNode);

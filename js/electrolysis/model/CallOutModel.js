@@ -6,8 +6,9 @@ define(function(require) {
 
     function CallOutModel(options) {
         PropertySet.call(this, _.extend({
-            text: '',
-            visible: false
+            liquidName: '',
+            visible: false,
+            conductor: null
         }, options));
 
         this.size = new Dimension2(320, 60);

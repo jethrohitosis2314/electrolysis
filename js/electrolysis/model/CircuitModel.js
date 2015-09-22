@@ -8,14 +8,23 @@ define(function(require) {
         PropertySet.call(this, {
             open: true,
             electrolyte: null,
-            bulbGlows: false
+            bulbGlows: false,
+            switchedOn: false
         });
 
         var checkCurrentFlow = function() {
-            if (!this.open && this.electrolyte && this.electrolyte.conductor) {
+            if (this.check() && this.electrolyte.conductor) {
                 this.bulbGlowsProperty.set(true);
             } else {
                 this.bulbGlowsProperty.set(false);
+            }
+        }.bind(this);
+
+        this.check = function(){
+            if (!this.open && this.electrolyte) {
+                return true;
+            } else {
+                return false;
             }
         }.bind(this);
 
