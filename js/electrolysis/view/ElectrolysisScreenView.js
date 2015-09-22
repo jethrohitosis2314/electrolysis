@@ -4,7 +4,7 @@
  *
  * @author prateek
  */
-define(function (require) {
+define(function(require) {
     'use strict';
 
     // modules
@@ -18,6 +18,7 @@ define(function (require) {
     var Vector2 = require('DOT/Vector2');
     var CircuitNode = require('ELECTROLYSIS/electrolysis/view/CircuitNode');
     var RackNode = require('ELECTROLYSIS/electrolysis/view/RackNode');
+    var CallOutNode = require('ELECTROLYSIS/electrolysis/view/CallOutNode');
 
     /**
      * @param {ElectrolysisModel} electrolysisModel
@@ -36,14 +37,16 @@ define(function (require) {
         var width = this.layoutBounds.width;
         var height = this.layoutBounds.height;
 
-        var modelViewTransform = ModelViewTransform2.createOffsetScaleMapping(new Vector2(0,0), 1);
+        var modelViewTransform = ModelViewTransform2.createOffsetScaleMapping(new Vector2(0, 0), 1);
         this.addChild(new CircuitNode(electrolysisModel.circuitModel, modelViewTransform));
+        this.addChild(new CallOutNode(electrolysisModel.callOutModel, modelViewTransform));
 
         this.addChild(new RackNode(electrolysisModel.rack, modelViewTransform));
 
+
         // Reset All button
         var resetAllButton = new ResetAllButton({
-            listener: function () {
+            listener: function() {
                 electrolysisModel.reset();
             },
             right: this.layoutBounds.maxX - 10,
@@ -55,7 +58,7 @@ define(function (require) {
     return inherit(ScreenView, ElectrolysisScreenView, {
 
         //TODO Called by the animation loop. Optional, so if your view has no animation, please delete this.
-        step: function (dt) {
+        step: function(dt) {
             //TODO Handle view animation here.
         }
     });
