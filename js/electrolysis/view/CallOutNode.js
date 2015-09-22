@@ -26,12 +26,12 @@ define(function(require) {
         this.addChild(textContainer);
 
         var text = null;
-        model.liquidNameProperty.link(function() {
+        model.conductorProperty.link(function() {
             if (text) {
                 this.removeChild(text);
             }
 
-            text = new Text(model.liquidName + " is" + (model.conductor ? " not" : "") + " a conductor", {
+            text = new Text(model.liquidName + " is" + (!model.conductor ? " not" : "") + " a conductor", {
                 font: new PhetFont(model.fontSize),
                 fill: model.fontColor,
                 x: 10,

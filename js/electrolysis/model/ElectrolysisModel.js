@@ -30,10 +30,10 @@ define(function(require) {
             }
         }.bind(this);
 
-        var callOut = function(){
-            if(this.circuitModel.check()){
+        var callOut = function() {
+            if (this.circuitModel.check()) {
                 this.callOutModel.visibleProperty.set(true);
-            } else{
+            } else {
                 this.callOutModel.visibleProperty.set(false);
             }
         }.bind(this);
@@ -42,13 +42,12 @@ define(function(require) {
             if (!electrolyte) return;
             this.callOutModel.liquidNameProperty.set(electrolyte.name);
             this.callOutModel.conductorProperty.set(electrolyte.conductor);
-            console.log("ElectrolyteProperty changed");
             callOut();
         }.bind(this));
 
-        this.circuitModel.switchedOnProperty.link(function(on){
-            
-            if(on){
+        this.circuitModel.switchedOnProperty.link(function(on) {
+
+            if (on) {
                 console.log("Switched on");
                 callOut();
             } else {

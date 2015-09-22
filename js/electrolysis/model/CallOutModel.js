@@ -8,7 +8,7 @@ define(function(require) {
         PropertySet.call(this, {
             liquidName: '',
             visible: false,
-            conductor: false
+            conductor: null
         });
 
         this.size = new Dimension2(320, 60);
