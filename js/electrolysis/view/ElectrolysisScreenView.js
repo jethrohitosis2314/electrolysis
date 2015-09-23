@@ -40,7 +40,6 @@ define(function(require) {
         var modelViewTransform = ModelViewTransform2.createOffsetScaleMapping(new Vector2(0, 0), 1);
         this.addChild(new CircuitNode(electrolysisModel.circuitModel, modelViewTransform));
         this.addChild(new CallOutNode(electrolysisModel.callOutModel, modelViewTransform));
-
         this.addChild(new RackNode(electrolysisModel.rack, modelViewTransform));
 
 

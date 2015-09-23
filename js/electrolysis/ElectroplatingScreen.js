@@ -1,8 +1,8 @@
 define(function(require) {
     'use strict';
 
-    var ElectrolysisModel = require('ELECTROLYSIS/electrolysis/model/ElectrolysisModel');
-    var ElectrolysisScreenView = require('ELECTROLYSIS/electrolysis/view/ElectrolysisScreenView');
+    var ElectroplatingModel = require('ELECTROLYSIS/electrolysis/model/Electroplating/ElectroplatingModel');
+    var ElectroplatingScreenView = require('ELECTROLYSIS/electrolysis/view/Electroplating/ElectroplatingScreenView');
     var inherit = require('PHET_CORE/inherit');
     var Screen = require('JOIST/Screen');
     var Image = require('SCENERY/nodes/Image');
@@ -10,22 +10,22 @@ define(function(require) {
 
     var electrolysisSimString = require('string!ELECTROLYSIS/electroplating.name');
 
-    function ElectrolysisScreen() {
+    function ElectroplatingScreen() {
         var icon = new Image(epImage);
 
-        window.ES = {};
-        ES.model = new ElectrolysisModel();
+        window.EP = {};
+        EP.model = new ElectroplatingModel();
         Screen.call(this, electrolysisSimString, icon,
             function() {
-                return ES.model;
+                return EP.model;
             },
             function(model) {
-                return new ElectrolysisScreenView(model);
+                return new ElectroplatingScreenView(model);
             }, {
                 backgroundColor: 'white'
             }
         );
     }
 
-    return inherit(Screen, ElectrolysisScreen);
+    return inherit(Screen, ElectroplatingScreen);
 });

@@ -7,6 +7,8 @@ define(function(require) {
     var CircuitModel = require('ELECTROLYSIS/electrolysis/model/CircuitModel');
     var RackModel = require('ELECTROLYSIS/electrolysis/model/RackModel');
     var CallOutModel = require('ELECTROLYSIS/electrolysis/model/CallOutModel');
+    var LiquidModel = require('ELECTROLYSIS/electrolysis/model/LiquidModel');
+    var Vector2 = require('DOT/Vector2');
 
     /**
      * @constructor
@@ -14,8 +16,13 @@ define(function(require) {
     function ElectrolysisModel() {
         PropertySet.call(this, {});
 
+        var liquids = [
+            new LiquidModel({name: "Water", color: 'cyan', conductor: false, location: new Vector2(60, 55)}),
+            new LiquidModel({name: "Salt Water", color: '#ddd', conductor: true, location: new Vector2(100, 55)})
+        ];
+
         this.circuitModel = new CircuitModel();
-        this.rack = new RackModel();
+        this.rack = new RackModel(liquids);
         this.callOutModel = new CallOutModel();
 
         this.tryPourLiquid = function(model, bounds) {

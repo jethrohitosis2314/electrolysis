@@ -5,39 +5,39 @@
  *
  * @author prateek
  */
-define( function( require ) {
-  'use strict';
+define(function(require) {
+    'use strict';
 
-  // modules
-  var ElectrolysisScreen = require( 'ELECTROLYSIS/electrolysis/ElectrolysisScreen' );
-  var ElectroplatingScreen = require( 'ELECTROLYSIS/electrolysis/ElectroplatingScreen');
-  var Sim = require( 'JOIST/Sim' );
-  var SimLauncher = require( 'JOIST/SimLauncher' );
+    // modules
+    var ElectrolysisScreen = require('ELECTROLYSIS/electrolysis/ElectrolysisScreen');
+    var ElectroplatingScreen = require('ELECTROLYSIS/electrolysis/ElectroplatingScreen');
+    var Sim = require('JOIST/Sim');
+    var SimLauncher = require('JOIST/SimLauncher');
 
-  // strings
-  var simTitle = require( 'string!ELECTROLYSIS/electrolysis.name' );
+    // strings
+    var simTitle = require('string!ELECTROLYSIS/electrolysis.name');
 
-  var simOptions = {
-    credits: {
-      //TODO fill in proper credits, all of these fields are optional, see joist.AboutDialog
-      leadDesign: '',
-      softwareDevelopment: '',
-      team: '',
-      qualityAssurance: '',
-      graphicArts: '',
-      thanks: ''
+    var simOptions = {
+        credits: {
+            //TODO fill in proper credits, all of these fields are optional, see joist.AboutDialog
+            leadDesign: '',
+            softwareDevelopment: '',
+            team: '',
+            qualityAssurance: '',
+            graphicArts: '',
+            thanks: ''
+        }
+    };
+
+    // Appending '?dev' to the URL will enable developer-only features.
+    if (phet.chipper.getQueryParameter('dev')) {
+        simOptions = _.extend({
+            // add dev-specific options here
+        }, simOptions);
     }
-  };
 
-  // Appending '?dev' to the URL will enable developer-only features.
-  if ( phet.chipper.getQueryParameter( 'dev' ) ) {
-    simOptions = _.extend( {
-      // add dev-specific options here
-    }, simOptions );
-  }
-
-  SimLauncher.launch( function() {
-    var sim = new Sim( simTitle, [ new ElectrolysisScreen(), new ElectroplatingScreen() ], simOptions );
-    sim.start();
-  } );
-} );
+    SimLauncher.launch(function() {
+        var sim = new Sim(simTitle, [new ElectroplatingScreen(), new ElectrolysisScreen()], simOptions);
+        sim.start();
+    });
+});
