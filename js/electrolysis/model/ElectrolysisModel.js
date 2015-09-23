@@ -18,8 +18,8 @@ define(function(require) {
         this.rack = new RackModel();
         this.callOutModel = new CallOutModel();
 
-        this.tryPourLiquid = function(model) {
-            if (this.circuitModel.collidesWith(model)) {
+        this.tryPourLiquid = function(model, bounds) {
+            if (this.circuitModel.collidesWith(bounds)) {
                 this.circuitModel.onReceiveDrop(model);
             }
         }.bind(this);

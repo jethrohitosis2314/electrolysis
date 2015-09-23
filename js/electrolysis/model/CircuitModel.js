@@ -32,8 +32,9 @@ define(function(require) {
             this.electrolyteProperty.set(liquid);
         }.bind(this);
 
-        this.collidesWith = function(draggable) {
-            var beakerLocation = new Vector2(-450, 300);
+        this.collidesWith = function(bounds) {
+            console.log(bounds);
+            var beakerLocation = new Vector2(300, 430);
             var beakerSize = new Dimension2(150, 100);
 
             var positionDelta = function(position1, position2, deltaX, deltaY) {
@@ -43,7 +44,7 @@ define(function(require) {
                 return within(position1.x, position2.x, position2.x + deltaX) && within(position1.y, position2.y, position2.y + deltaY);
             };
 
-            return positionDelta(draggable.location, beakerLocation, beakerSize.width, beakerSize.height);
+            return positionDelta(new Vector2(bounds.minX, bounds.minY), beakerLocation, beakerSize.width, beakerSize.height);
         }.bind(this);
     }
 
