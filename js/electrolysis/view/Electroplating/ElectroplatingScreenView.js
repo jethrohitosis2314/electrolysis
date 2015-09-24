@@ -19,10 +19,11 @@ define(function(require) {
 
         var width = this.layoutBounds.width;
         var height = this.layoutBounds.height;
+        var environment = electroplatingModel.environment;
 
         var modelViewTransform = ModelViewTransform2.createOffsetScaleMapping(new Vector2(0, 0), 1);
-        this.addChild(new CircuitNode(electroplatingModel.circuitModel, modelViewTransform));
-        this.addChild(new RackNode(electroplatingModel.rackModel, modelViewTransform));
+        this.addChild(new CircuitNode(electroplatingModel.circuitModel, modelViewTransform, environment));
+        this.addChild(new RackNode(electroplatingModel.rackModel, modelViewTransform, environment));
 
         var resetAllButton = new ResetAllButton({
             listener: function() {

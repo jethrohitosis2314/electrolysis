@@ -6,6 +6,10 @@ define(function(require) {
 
     function Beaker(options) {
         this.parent = options.parent;
+        this.location = options.location;
+        this.liquidFillLocation = options.liquidFillLocation;
+        this.liquidFillSize = options.liquidFillSize;
+
         PropertySet.call(this, {
             electrolyte: null
         });

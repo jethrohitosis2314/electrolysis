@@ -7,6 +7,7 @@ define(function(require) {
     var Screen = require('JOIST/Screen');
     var Image = require('SCENERY/nodes/Image');
     var epImage = require("image!ELECTROLYSIS/ep.png");
+    var Environment = require('ELECTROLYSIS/electrolysis/Environment');
 
     var electrolysisSimString = require('string!ELECTROLYSIS/electroplating.name');
 
@@ -14,7 +15,9 @@ define(function(require) {
         var icon = new Image(epImage);
 
         window.EP = {};
-        EP.model = new ElectroplatingModel();
+        
+        var environment = new Environment();
+        EP.model = new ElectroplatingModel(environment);
         Screen.call(this, electrolysisSimString, icon,
             function() {
                 return EP.model;

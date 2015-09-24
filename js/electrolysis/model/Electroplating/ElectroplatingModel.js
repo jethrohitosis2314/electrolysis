@@ -8,7 +8,7 @@ define(function(require) {
     var Vector2 = require('DOT/Vector2');
     var RackModel = require('ELECTROLYSIS/electrolysis/model/RackModel');
 
-    function ElectroplatingModel() {
+    function ElectroplatingModel(environment) {
         PropertySet.call(this, {});
         var liquids = [
             new LiquidModel({name: "Water", color: 'cyan', conductor: false, location: new Vector2(60, 55)}),
@@ -16,6 +16,7 @@ define(function(require) {
         ];
         this.rackModel = new RackModel(liquids);
         this.circuitModel = new CircuitModel();
+        this.environment = environment;
     }
 
     return inherit(PropertySet, ElectroplatingModel, {

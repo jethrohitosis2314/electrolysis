@@ -14,14 +14,20 @@ define(function(require) {
 
     function BeakerNode(model, modelViewTransform, environment) {
         Node.call(this, {
-            x: 151,
-            y: 300
+            x: model.location.x,
+            y: model.location.y
         });
 
-        var rectangleNode = new Rectangle(15, 30, 150, 100, 0, 0, {
+        var rectangleNode = new Rectangle(
+            model.liquidFillLocation.x,
+            model.liquidFillLocation.y,
+            model.liquidFillSize.width,
+            model.liquidFillSize.height, 
+            0, 0, {
             fill: '#000',
             lineWidth: 0
         });
+        
         this.addChild(rectangleNode);
         model.electrolyteProperty.link(function(liquid) {
             rectangleNode.fill = liquid ? liquid.color : '';

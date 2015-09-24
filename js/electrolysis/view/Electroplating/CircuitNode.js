@@ -10,13 +10,13 @@ define(function(require) {
 
     var circuitImage = require('image!ELECTROLYSIS/electroplating_circuit.png');
 
-    function CircuitNode(model, modelViewTransform) {
+    function CircuitNode(model, modelViewTransform, environment) {
         Node.call(this, {
             x: 50,
             y: 70
         });
 
-        var liquidFill = new Rectangle(
+        this.liquidFill = new Rectangle(
             model.beakerLocation.x,
             model.beakerLocation.y,
             model.beakerSize.width,
@@ -51,12 +51,12 @@ define(function(require) {
             .addColorStop(0.9, 'rgba( 255, 255, 0, 0 )');
 
         this.addChild(glow);
-        this.addChild(liquidFill);
+        this.addChild(this.liquidFill);
         this.addChild(key);
         this.addChild(image);
 
         model.electrolyteProperty.link(function(liquid) {
-            liquidFill.fill = liquid ? liquid.color : 'red';
+            this.liquidFill.fill = liquid ? liquid.color : 'red';
         }.bind(this));
 
         model.openProperty.link(function(open) {
@@ -73,6 +73,8 @@ define(function(require) {
                 }
             }
         }));
+
+        environment.addDroppable(this.liquidFill);
     }
 
     return inherit(Node, CircuitNode);
