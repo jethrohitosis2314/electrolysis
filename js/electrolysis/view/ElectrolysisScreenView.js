@@ -37,10 +37,12 @@ define(function(require) {
         var width = this.layoutBounds.width;
         var height = this.layoutBounds.height;
 
+        var environment = electrolysisModel.environment;
+
         var modelViewTransform = ModelViewTransform2.createOffsetScaleMapping(new Vector2(0, 0), 1);
-        this.addChild(new CircuitNode(electrolysisModel.circuitModel, modelViewTransform));
-        this.addChild(new CallOutNode(electrolysisModel.callOutModel, modelViewTransform));
-        this.addChild(new RackNode(electrolysisModel.rack, modelViewTransform));
+        this.addChild(new CircuitNode(electrolysisModel.circuitModel, modelViewTransform, environment));
+        this.addChild(new CallOutNode(electrolysisModel.callOutModel, modelViewTransform, environment));
+        this.addChild(new RackNode(electrolysisModel.rack, modelViewTransform, environment));
 
 
         // Reset All button

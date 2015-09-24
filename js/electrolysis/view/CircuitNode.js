@@ -7,20 +7,19 @@ define(function(require) {
     var Circle = require('SCENERY/nodes/Circle');
     var DownUpListener = require('SCENERY/input/DownUpListener');
     var RadialGradient = require('SCENERY/util/RadialGradient');
-    var environment = require('ELECTROLYSIS/electrolysis/Environment');
     var Vector2 = require('DOT/Vector2');
     var Dimension2 = require('DOT/Dimension2');
     var BeakerNode = require('ELECTROLYSIS/electrolysis/view/BeakerNode');
 
     var circuitImage = require('image!ELECTROLYSIS/circuit.svg');
 
-    function CircuitNode(model, modelViewTransform) {
+    function CircuitNode(model, modelViewTransform, environment) {
         Node.call(this, {
             x: 50,
             y: 100
         });
 
-        var beakerNode = new BeakerNode(model.beaker, modelViewTransform);
+        var beakerNode = new BeakerNode(model.beaker, modelViewTransform, environment);
         this.addChild(beakerNode);
 
         var key = new Circle(8, {

@@ -14,6 +14,7 @@ define(function(require) {
     var Screen = require('JOIST/Screen');
     var Image = require('SCENERY/nodes/Image');
     var elImage = require("image!ELECTROLYSIS/el.png");
+    var Environment = require('ELECTROLYSIS/electrolysis/Environment');
 
     // strings
     var electrolysisSimString = require('string!ELECTROLYSIS/electrolysis.name');
@@ -26,9 +27,9 @@ define(function(require) {
         //If this is a single-screen sim, then no icon is necessary.
         //If there are multiple screens, then the icon must be provided here.
         var icon = new Image(elImage);
-
+        var environment = new Environment();
         window.ES = {};
-        ES.model = new ElectrolysisModel();
+        ES.model = new ElectrolysisModel(environment);
         Screen.call(this, electrolysisSimString, icon,
             function() {
                 return ES.model;

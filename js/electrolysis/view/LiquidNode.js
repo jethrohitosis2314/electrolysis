@@ -6,11 +6,10 @@ define(function (require) {
     var SimpleDragHandler = require('SCENERY/input/SimpleDragHandler');
     var Shape = require('KITE/Shape');
     var Path = require('SCENERY/nodes/Path');
-    var environment = require('ELECTROLYSIS/electrolysis/Environment');
 
     var flaskImage = require('image!ELECTROLYSIS/flask.svg');
 
-    function LiquidNode(model, modelViewTransform) {
+    function LiquidNode(model, modelViewTransform, environment) {
         Node.call(this, {
             x: 0,
             y: 0

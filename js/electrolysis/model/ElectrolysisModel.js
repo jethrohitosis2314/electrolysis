@@ -13,7 +13,7 @@ define(function(require) {
     /**
      * @constructor
      */
-    function ElectrolysisModel() {
+    function ElectrolysisModel(environment) {
         PropertySet.call(this, {});
 
         var liquids = [
@@ -24,7 +24,8 @@ define(function(require) {
         this.circuitModel = new CircuitModel();
         this.rack = new RackModel(liquids);
         this.callOutModel = new CallOutModel();
-
+        this.environment = environment;
+        
         var callOut = function() {
             if (this.circuitModel.check()) {
                 this.callOutModel.visibleProperty.set(true);

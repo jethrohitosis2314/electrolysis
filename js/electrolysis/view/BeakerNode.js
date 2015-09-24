@@ -7,13 +7,12 @@ define(function(require) {
     var Circle = require('SCENERY/nodes/Circle');
     var DownUpListener = require('SCENERY/input/DownUpListener');
     var RadialGradient = require('SCENERY/util/RadialGradient');
-    var environment = require('ELECTROLYSIS/electrolysis/Environment');
     var Vector2 = require('DOT/Vector2');
     var Dimension2 = require('DOT/Dimension2');
 
     var beakerImage = require('image!ELECTROLYSIS/beaker.svg');
 
-    function BeakerNode(model, modelViewTransform) {
+    function BeakerNode(model, modelViewTransform, environment) {
         Node.call(this, {
             x: 151,
             y: 300
