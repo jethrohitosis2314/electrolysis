@@ -3,49 +3,32 @@ define(function(require) {
     var inherit = require('PHET_CORE/inherit');
     var Dimension2 = require('DOT/Dimension2');
     var Vector2 = require('DOT/Vector2');
+    var Beaker = require('ELECTROLYSIS/electrolysis/model/Beaker');
 
     function CircuitModel() {
         PropertySet.call(this, {
             open: true,
-            electrolyte: null,
             bulbGlows: false,
             switchedOn: false
         });
 
-        var checkCurrentFlow = function() {
-            this.bulbGlowsProperty.set(this.check() && this.electrolyte.conductor);
+        this.checkCurrentFlow = function() {
+            this.bulbGlowsProperty.set(this.check() && this.beaker.electrolyte.conductor);
         }.bind(this);
 
         this.check = function() {
-            return !this.open && this.electrolyte;
+            return !this.open && this.beaker.electrolyte;
         }.bind(this);
+
+        this.beaker = new Beaker({parent: this});
 
         this.openProperty.link(function() {
-            checkCurrentFlow();
-        });
+            this.checkCurrentFlow();
+        }.bind(this));
 
-        this.electrolyteProperty.link(function() {
-            checkCurrentFlow();
-        });
-
-        this.onReceiveDrop = function(liquid) {
-            this.electrolyteProperty.set(liquid);
-        }.bind(this);
-
-        this.collidesWith = function(bounds) {
-            console.log(bounds);
-            var beakerLocation = new Vector2(300, 430);
-            var beakerSize = new Dimension2(150, 100);
-
-            var positionDelta = function(position1, position2, deltaX, deltaY) {
-                var within = function(value, lowerBound, upperBound) {
-                    return lowerBound < value && value < upperBound;
-                };
-                return within(position1.x, position2.x, position2.x + deltaX) && within(position1.y, position2.y, position2.y + deltaY);
-            };
-
-            return positionDelta(new Vector2(bounds.minX, bounds.minY), beakerLocation, beakerSize.width, beakerSize.height);
-        }.bind(this);
+        this.beaker.electrolyteProperty.link(function() {
+            this.checkCurrentFlow();
+        }.bind(this));
     }
 
     return inherit(PropertySet, CircuitModel);

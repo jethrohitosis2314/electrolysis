@@ -7,6 +7,10 @@ define(function(require) {
     var Circle = require('SCENERY/nodes/Circle');
     var DownUpListener = require('SCENERY/input/DownUpListener');
     var RadialGradient = require('SCENERY/util/RadialGradient');
+    var environment = require('ELECTROLYSIS/electrolysis/Environment');
+    var Vector2 = require('DOT/Vector2');
+    var Dimension2 = require('DOT/Dimension2');
+    var BeakerNode = require('ELECTROLYSIS/electrolysis/view/BeakerNode');
 
     var circuitImage = require('image!ELECTROLYSIS/circuit.svg');
 
@@ -16,18 +20,12 @@ define(function(require) {
             y: 100
         });
 
-        var rectangleNode = new Rectangle(200, 300, 150, 100, 0, 0, {
-            fill: '#000',
-            lineWidth: 0
-        });
-        this.addChild(rectangleNode);
-        model.electrolyteProperty.link(function(liquid) {
-            rectangleNode.fill = liquid ? liquid.color : '';
-        }.bind(this));
+        var beakerNode = new BeakerNode(model.beaker, modelViewTransform);
+        this.addChild(beakerNode);
 
         var key = new Circle(8, {
-            x: 527,
-            y: 171,
+            x: 464,
+            y: 177,
             fill: '#000',
             cursor: 'pointer',
             stroke: '#fff',
@@ -50,8 +48,8 @@ define(function(require) {
         });
 
         var glow = new Circle(40, {
-            x: 73,
-            y: 20
+            x: 65,
+            y: 22
         });
         glow.fill = new RadialGradient(0, 0, 0, 0, 0, 40)
             .addColorStop(0, 'rgba( 255, 255, 0, 1 )')

@@ -13,7 +13,7 @@ define(function(require) {
     var inherit = require('PHET_CORE/inherit');
     var Screen = require('JOIST/Screen');
     var Image = require('SCENERY/nodes/Image');
-    var elImage = require("image!ELECTROLYSIS/el.png")
+    var elImage = require("image!ELECTROLYSIS/el.png");
 
     // strings
     var electrolysisSimString = require('string!ELECTROLYSIS/electrolysis.name');

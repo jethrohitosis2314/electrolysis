@@ -25,12 +25,6 @@ define(function(require) {
         this.rack = new RackModel(liquids);
         this.callOutModel = new CallOutModel();
 
-        this.tryPourLiquid = function(model, bounds) {
-            if (this.circuitModel.collidesWith(bounds)) {
-                this.circuitModel.onReceiveDrop(model);
-            }
-        }.bind(this);
-
         var callOut = function() {
             if (this.circuitModel.check()) {
                 this.callOutModel.visibleProperty.set(true);
@@ -39,7 +33,7 @@ define(function(require) {
             }
         }.bind(this);
 
-        this.circuitModel.electrolyteProperty.link(function(electrolyte) {
+        this.circuitModel.beaker.electrolyteProperty.link(function(electrolyte) {
             if (!electrolyte) return;
             this.callOutModel.liquidNameProperty.set(electrolyte.name);
             this.callOutModel.conductorProperty.set(electrolyte.conductor);
