@@ -23,13 +23,13 @@ define(function(require) {
                 name: 'copper',            
                 color: 'red', 
                 liquid: [saltWater], 
-                location: new Vector2(70, 143)
+                location: new Vector2(70, 135)
             }),
              new MetalStripModel({
                 name: 'zinc',
                 color: 'blue', 
                 liquid: [water],
-                location: new Vector2(30, 143)
+                location: new Vector2(30, 135)
             })
         ];
         var article = []

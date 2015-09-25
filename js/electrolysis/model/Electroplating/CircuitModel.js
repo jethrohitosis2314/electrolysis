@@ -4,6 +4,8 @@ define(function(require) {
     var Dimension2 = require('DOT/Dimension2');
     var Vector2 = require('DOT/Vector2');
     var BeakerModel = require('ELECTROLYSIS/electrolysis/model/Beaker');
+    var ElectrodeSlotModel = require('ELECTROLYSIS/electrolysis/model/Electroplating/ElectrodeSlotModel');
+
 
     function CircuitModel() {
         PropertySet.call(this, {
@@ -11,12 +13,15 @@ define(function(require) {
             electrolyte: null,
             bulbGlows: false,
             switchedOn: false,
-            electrode1: null,
-            electrode2: null
+            anode: null,
+            cathode: null
         });
         this.beakerLocation = new Vector2(178, 339);
         this.beakerSize = new Dimension2(120, 80);
         this.beakerColor = 'Aqua';
+
+        this.anodeSlot = new ElectrodeSlotModel({location: new Vector2(199,322)});
+        this.cathodeSlot = new ElectrodeSlotModel({location:new Vector2(274,322)});
 
         this.checkCurrentFlow = function() {
             this.bulbGlowsProperty.set(this.check() && this.electrolyte.conductor);

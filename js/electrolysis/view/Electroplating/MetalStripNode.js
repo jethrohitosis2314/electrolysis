@@ -11,11 +11,13 @@ define(function (require) {
             y: model.location.y
         });
 
+        this.accepts = model.accepts;
+
         var rectangleNode = new Rectangle(
             0,
             0,
-            10,
-            28, 
+            model.size.width,
+            model.size.height, 
             0, 0, {
             fill: model.color,
             lineWidth: 0

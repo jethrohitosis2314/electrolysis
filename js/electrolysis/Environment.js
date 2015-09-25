@@ -9,7 +9,6 @@ define(function(require) {
 
         this.onDrop = function(eventObject) {
             this.droppables.forEach(function(droppable) {
-
                 if(isValidDrop(eventObject.model, droppable)){
                     if(collides(eventObject.bounds, droppable)) {
                         droppable.onReceiveDrop(eventObject.model);

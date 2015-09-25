@@ -9,17 +9,23 @@ define(function(require) {
     var RadialGradient = require('SCENERY/util/RadialGradient');
     var BeakerModel = require('ELECTROLYSIS/electrolysis/model/Beaker');
     var BeakerNode = require('ELECTROLYSIS/electrolysis/view/BeakerNode');
+    var ElectrodeSlotNode = require('ELECTROLYSIS/electrolysis/view/Electroplating/ElectrodeSlotNode');
 
     var circuitImage = require('image!ELECTROLYSIS/Electroplating_circuitv2.png');
 
     function CircuitNode(model, modelViewTransform, environment) {
         Node.call(this, {
-            x: 50,
-            y: 70
+            x: 0,
+            y: 5
         });
 
         var beakerNode = new BeakerNode(model.beaker, modelViewTransform, environment);
         this.addChild(beakerNode);
+
+        var anodeSlotNode = new ElectrodeSlotNode(model.anodeSlot, environment);
+        var cathodeSlotNode = new ElectrodeSlotNode(model.cathodeSlot, environment);
+        this.addChild(anodeSlotNode);
+        this.addChild(cathodeSlotNode);
 
         this.liquidFill = new Rectangle(
             model.beakerLocation.x,
@@ -36,7 +42,7 @@ define(function(require) {
             y: 177,
             fill: '#000',
             cursor: 'pointer',
-            stroke: 'red',
+            stroke: '#fff',
             lineWidth: 15
         });
 
@@ -48,7 +54,7 @@ define(function(require) {
         var glow = new Circle(40, {
             x: 100,
             y: 27,
-            visible: true
+            visible: false
         });
 
 
