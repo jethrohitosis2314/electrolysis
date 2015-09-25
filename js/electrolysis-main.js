@@ -37,7 +37,7 @@ define(function(require) {
     }
 
     SimLauncher.launch(function() {
-        var sim = new Sim(simTitle, [ new ElectroplatingScreen()], simOptions);
+        var sim = new Sim(simTitle, [ new ElectrolysisScreen(), new ElectroplatingScreen()], simOptions);
         sim.start();
     });
 });
