@@ -7,14 +7,19 @@ define(function(require) {
     var Circle = require('SCENERY/nodes/Circle');
     var DownUpListener = require('SCENERY/input/DownUpListener');
     var RadialGradient = require('SCENERY/util/RadialGradient');
+    var BeakerModel = require('ELECTROLYSIS/electrolysis/model/Beaker');
+    var BeakerNode = require('ELECTROLYSIS/electrolysis/view/BeakerNode');
 
-    var circuitImage = require('image!ELECTROLYSIS/electroplating_circuit.png');
+    var circuitImage = require('image!ELECTROLYSIS/Electroplating_circuitv2.png');
 
     function CircuitNode(model, modelViewTransform, environment) {
         Node.call(this, {
             x: 50,
             y: 70
         });
+
+        var beakerNode = new BeakerNode(model.beaker, modelViewTransform, environment);
+        this.addChild(beakerNode);
 
         this.liquidFill = new Rectangle(
             model.beakerLocation.x,
@@ -46,18 +51,14 @@ define(function(require) {
             visible: true
         });
 
+
         glow.fill = new RadialGradient(0, 0, 0, 0, 0, 40)
             .addColorStop(0, 'rgba( 255, 255, 0, 1 )')
             .addColorStop(0.9, 'rgba( 255, 255, 0, 0 )');
 
         this.addChild(glow);
-        this.addChild(this.liquidFill);
         this.addChild(key);
         this.addChild(image);
-
-        model.electrolyteProperty.link(function(liquid) {
-            this.liquidFill.fill = liquid ? liquid.color : 'red';
-        }.bind(this));
 
         model.openProperty.link(function(open) {
             key.fill = open ? '#fff' : '#000';

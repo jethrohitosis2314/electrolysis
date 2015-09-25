@@ -3,6 +3,7 @@ define(function(require) {
     var inherit = require('PHET_CORE/inherit');
     var Dimension2 = require('DOT/Dimension2');
     var Vector2 = require('DOT/Vector2');
+    var BeakerModel = require('ELECTROLYSIS/electrolysis/model/Beaker');
 
     function CircuitModel() {
         PropertySet.call(this, {
@@ -17,7 +18,7 @@ define(function(require) {
         this.beakerSize = new Dimension2(120, 80);
         this.beakerColor = 'Aqua';
 
-        var checkCurrentFlow = function() {
+        this.checkCurrentFlow = function() {
             this.bulbGlowsProperty.set(this.check() && this.electrolyte.conductor);
         }.bind(this);
 
@@ -25,31 +26,26 @@ define(function(require) {
             return !this.open && this.electrolyte;
         }.bind(this);
 
-        this.openProperty.link(function() {
-            checkCurrentFlow();
-        });
-
-        this.electrolyteProperty.link(function() {
-            checkCurrentFlow();
-        });
-
         this.onReceiveDrop = function(liquid) {
             this.electrolyteProperty.set(liquid);
         }.bind(this);
 
-        this.collidesWith = function(draggable) {
-            var beakerLocation = new Vector2(-450, 300);
-            var beakerSize = new Dimension2(150, 100);
+        this.openProperty.link(function() {
+            this.checkCurrentFlow();
+        }.bind(this));
 
-            var positionDelta = function(position1, position2, deltaX, deltaY) {
-                var within = function(value, lowerBound, upperBound) {
-                    return lowerBound < value && value < upperBound;
-                };
-                return within(position1.x, position2.x, position2.x + deltaX) && within(position1.y, position2.y, position2.y + deltaY);
-            };
+        this.electrolyteProperty.link(function() {
+            this.checkCurrentFlow();
+        }.bind(this));
+        
+        var option = {
+            location: new Vector2(151,300),
+            liquidFillLocation: new Vector2(15, 30),
+            liquidFillSize: new Dimension2(150, 100),
+            parent: this
+        };
+        this.beaker = new BeakerModel(option);
 
-            return positionDelta(draggable.location, beakerLocation, beakerSize.width, beakerSize.height);
-        }.bind(this);
     }
 
     return inherit(PropertySet, CircuitModel);

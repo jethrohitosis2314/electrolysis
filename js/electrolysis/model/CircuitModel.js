@@ -11,10 +11,6 @@ define(function(require) {
             bulbGlows: false,
             switchedOn: false
         });
-        this.beakerLocation = new Vector2(151,300);
-        this.liquidFillLocation = new Vector2(15, 30);
-        this.liquidFillSize = new Dimension2(150, 100);
-
         this.checkCurrentFlow = function() {
             this.bulbGlowsProperty.set(this.check() && this.beaker.electrolyte.conductor);
         }.bind(this);

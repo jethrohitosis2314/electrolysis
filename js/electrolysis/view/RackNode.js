@@ -4,6 +4,7 @@ define(function(require){
     var inherit = require('PHET_CORE/inherit');
     var Image = require('SCENERY/nodes/Image');
     var LiquidNode = require('ELECTROLYSIS/electrolysis/view/LiquidNode');
+    var MetalStripNode = require('ELECTROLYSIS/electrolysis/view/Electroplating/MetalStripNode');
 
     var rackImage = require('image!ELECTROLYSIS/rack.svg');
 
@@ -17,6 +18,13 @@ define(function(require){
             var liquidNode = new LiquidNode(liquid, modelViewTransform, environment);
             this.addChild(liquidNode);
         }.bind(this));
+
+        if(typeof model.metalStrips !== "undefined"){
+            model.metalStrips.forEach(function(metal){
+                var metalStripNode = new MetalStripNode(metal, modelViewTransform, environment);
+                this.addChild(metalStripNode);
+            }.bind(this));
+        }
     }
 
     return inherit(Node, RackNode);

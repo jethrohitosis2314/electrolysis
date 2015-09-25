@@ -18,6 +18,8 @@ define(function(require) {
             y: model.location.y
         });
 
+        this.accepts = model.accepts;
+
         var rectangleNode = new Rectangle(
             model.liquidFillLocation.x,
             model.liquidFillLocation.y,
