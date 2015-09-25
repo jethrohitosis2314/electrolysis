@@ -5,6 +5,8 @@ define(function(require){
     var Image = require('SCENERY/nodes/Image');
     var LiquidNode = require('ELECTROLYSIS/electrolysis/view/LiquidNode');
     var MetalStripNode = require('ELECTROLYSIS/electrolysis/view/Electroplating/MetalStripNode');
+    var SpoonNode = require('ELECTROLYSIS/electrolysis/view/Electroplating/SpoonNode');
+    
 
     var rackImage = require('image!ELECTROLYSIS/rack.svg');
 
@@ -24,6 +26,11 @@ define(function(require){
                 var metalStripNode = new MetalStripNode(metal, modelViewTransform, environment);
                 this.addChild(metalStripNode);
             }.bind(this));
+        }
+
+        if(typeof model.spoon !== "undefined"){
+            var spoonNode = new SpoonNode(model.spoon, modelViewTransform, environment);
+            this.addChild(spoonNode);
         }
     }
 

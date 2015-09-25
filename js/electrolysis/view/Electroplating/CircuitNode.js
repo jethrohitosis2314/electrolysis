@@ -70,6 +70,8 @@ define(function(require) {
             key.fill = open ? '#fff' : '#000';
         });
 
+        model.bulbGlowsProperty.linkAttribute(glow, 'visible');
+
         key.addInputListener(new DownUpListener({
             up: function() {
                 model.openProperty.set(!model.open);

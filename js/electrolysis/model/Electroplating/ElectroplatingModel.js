@@ -5,6 +5,7 @@ define(function(require) {
     var PropertySet = require('AXON/PropertySet');
     var CircuitModel = require('ELECTROLYSIS/electrolysis/model/Electroplating/CircuitModel');
     var MetalStripModel = require('ELECTROLYSIS/electrolysis/model/Electroplating/MetalStripModel');
+    var SpoonModel = require('ELECTROLYSIS/electrolysis/model/Electroplating/SpoonModel');
     var LiquidModel = require('ELECTROLYSIS/electrolysis/model/LiquidModel');
     var Vector2 = require('DOT/Vector2');
     var RackModel = require('ELECTROLYSIS/electrolysis/model/RackModel');
@@ -32,8 +33,11 @@ define(function(require) {
                 location: new Vector2(30, 135)
             })
         ];
+
+        var spoonModel = new SpoonModel({name: "Water", color: 'cyan', conductor: false, location: new Vector2(90, 200)})
+
         var article = []
-        this.rackModel = new RackModel(liquids, metalStrips);
+        this.rackModel = new RackModel(liquids, metalStrips, spoonModel);
         this.circuitModel = new CircuitModel();
         this.environment = environment;
     }

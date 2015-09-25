@@ -12,7 +12,6 @@ define(function(require) {
 
 		this.onReceiveDrop = function(metalStrip){
 			this.electrodeProperty.set(metalStrip);
-            console.log(metalStrip);
 		}.bind(this);
 
 	}

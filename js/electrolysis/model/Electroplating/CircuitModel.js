@@ -10,11 +10,8 @@ define(function(require) {
     function CircuitModel() {
         PropertySet.call(this, {
             open: true,
-            electrolyte: null,
             bulbGlows: false,
-            switchedOn: false,
-            anode: null,
-            cathode: null
+            switchedOn: false
         });
         this.beakerLocation = new Vector2(178, 339);
         this.beakerSize = new Dimension2(120, 80);
@@ -24,11 +21,11 @@ define(function(require) {
         this.cathodeSlot = new ElectrodeSlotModel({location:new Vector2(274,322)});
 
         this.checkCurrentFlow = function() {
-            this.bulbGlowsProperty.set(this.check() && this.electrolyte.conductor);
+            this.bulbGlowsProperty.set(this.check() && this.beaker.electrolyte.conductor);
         }.bind(this);
 
         this.check = function() {
-            return !this.open && this.electrolyte;
+            return !this.open && this.beaker.electrolyte && this.anodeSlot.electrode && this.cathodeSlot.electrode;
         }.bind(this);
 
         this.onReceiveDrop = function(liquid) {
@@ -39,10 +36,6 @@ define(function(require) {
             this.checkCurrentFlow();
         }.bind(this));
 
-        this.electrolyteProperty.link(function() {
-            this.checkCurrentFlow();
-        }.bind(this));
-        
         var option = {
             location: new Vector2(151,300),
             liquidFillLocation: new Vector2(15, 30),

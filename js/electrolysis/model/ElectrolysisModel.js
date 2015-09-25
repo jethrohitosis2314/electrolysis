@@ -44,6 +44,8 @@ define(function(require) {
         this.circuitModel.switchedOnProperty.link(function(on) {
             callOut();
         }.bind(this));
+
+        
     }
 
     return inherit(PropertySet, ElectrolysisModel, {
