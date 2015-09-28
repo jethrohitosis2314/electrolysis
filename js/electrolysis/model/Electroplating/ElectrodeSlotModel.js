@@ -8,7 +8,7 @@ define(function(require) {
 		});
 
 		this.location = option.location;
-		this.accepts = ['MetalStripModel'];
+		this.accepts = ['MetalStripModel', 'SpoonModel'];
 
 		this.onReceiveDrop = function(metalStrip){
 			this.electrodeProperty.set(metalStrip);
