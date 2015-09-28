@@ -56,25 +56,31 @@ define(function(require) {
         });
         this.addChild(image);
 
+        model.colorProperty.link(function(color) {
+            fillPath.fill = color;
+            rectangle.fill = color;
+        }.bind(this));
 
-        var displayElectrode = function(){
+        var toggleSpoon = function(show) {
+            image.visible = show;
+            fillPath.visible = show;
+        };
+
+        this.displayElectrode = function(){
+            toggleSpoon(false);
+            rectangle.visible = false;
             if(model.electrode) {
                 if(model.electrode.constructor.name === 'SpoonModel') {
-                    image.visible = true;
-                    fillPath.fill = model.electrode.color;
+                    toggleSpoon(true);
                 } else {
-                    image.visible = false;
-                    rectangle.fill = model.electrode.color;
+                    rectangle.visible = true;
                 }
-            } else {
-                image.visible = false;
-                rectangle.fill = '';
             }
         }
         this.addChild(rectangle);
 
         model.electrodeProperty.link(function(electrode){
-            displayElectrode();
+            this.displayElectrode();
         }.bind(this));
 
         this.onReceiveDrop = function(metalStrip){

@@ -21,7 +21,12 @@ define(function(require) {
         this.cathodeSlot = new ElectrodeSlotModel({location:new Vector2(274,322)});
 
         this.checkCurrentFlow = function() {
-            this.bulbGlowsProperty.set(this.check() && this.beaker.electrolyte.conductor);
+            if(this.check() && this.beaker.electrolyte.conductor) {
+                this.bulbGlowsProperty.set(true);
+                this.cathodeSlot.colorProperty.set(this.anodeSlot.color);
+            } else {
+                this.bulbGlowsProperty.set(false);
+            }
         }.bind(this);
 
         this.check = function() {

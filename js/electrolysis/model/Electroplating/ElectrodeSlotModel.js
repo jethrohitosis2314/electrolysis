@@ -4,7 +4,8 @@ define(function(require) {
 
 	function ElectrodeSlotModel(option){
 		PropertySet.call(this,{
-			electrode: null
+			electrode: null,
+			color: ''
 		});
 
 		this.location = option.location;
@@ -12,6 +13,7 @@ define(function(require) {
 
 		this.onReceiveDrop = function(metalStrip){
 			this.electrodeProperty.set(metalStrip);
+			this.colorProperty.set(metalStrip.color);
 		}.bind(this);
 
 	}
