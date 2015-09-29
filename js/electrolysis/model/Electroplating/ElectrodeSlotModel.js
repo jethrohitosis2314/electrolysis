@@ -5,10 +5,12 @@ define(function(require) {
 	function ElectrodeSlotModel(option){
 		PropertySet.call(this,{
 			electrode: null,
-			color: ''
+			color: '',
+			canHandle: ''
 		});
 
 		this.location = option.location;
+		this.canHandle = option.canHandle;
 		this.accepts = ['MetalStripModel', 'SpoonModel'];
 
 		this.onReceiveDrop = function(metalStrip){

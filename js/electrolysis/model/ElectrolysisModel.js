@@ -17,8 +17,8 @@ define(function(require) {
         PropertySet.call(this, {});
 
         var liquids = [
-            new LiquidModel({name: "Water", color: 'cyan', conductor: false, location: new Vector2(60, 55)}),
-            new LiquidModel({name: "Salt Water", color: '#ddd', conductor: true, location: new Vector2(100, 55)})
+            new LiquidModel({name: "Distilled Water", color: 'cyan', conductor: false, location: new Vector2(60, 55)}),
+            new LiquidModel({name: "Salt Water", color: '#ddd', conductor: true, location: new Vector2(140, 55)})
         ];
 
         this.circuitModel = new CircuitModel();

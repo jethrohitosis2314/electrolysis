@@ -5,7 +5,7 @@ define(function(require) {
     var Vector2 = require('DOT/Vector2');
     var BeakerModel = require('ELECTROLYSIS/electrolysis/model/Beaker');
     var ElectrodeSlotModel = require('ELECTROLYSIS/electrolysis/model/Electroplating/ElectrodeSlotModel');
-
+    var Rainbow = require('ELECTROLYSIS/rainbow');
 
     function CircuitModel() {
         PropertySet.call(this, {
@@ -18,12 +18,26 @@ define(function(require) {
         this.beakerColor = 'Aqua';
 
         this.anodeSlot = new ElectrodeSlotModel({location: new Vector2(199,322)});
-        this.cathodeSlot = new ElectrodeSlotModel({location:new Vector2(274,322)});
+        this.cathodeSlot = new ElectrodeSlotModel({location:new Vector2(274,322), canHandle: ''});
 
         this.checkCurrentFlow = function() {
             if(this.check() && this.beaker.electrolyte.conductor) {
                 this.bulbGlowsProperty.set(true);
-                this.cathodeSlot.colorProperty.set(this.anodeSlot.color);
+
+                var cur = 0;
+                  
+                var rainbow = new Rainbow(); 
+                rainbow.setNumberRange(0, 1000); 
+                rainbow.setSpectrum(this.cathodeSlot.color, this.anodeSlot.color);
+                  
+                var id = setInterval(function() {    
+                    var color = rainbow.colourAt(cur);
+                    
+                    this.cathodeSlot.colorProperty.set('#' + color);
+                    
+                    cur++;
+                    if(cur > 1000) clearInterval(id);
+                 }.bind(this), 1);
             } else {
                 this.bulbGlowsProperty.set(false);
             }

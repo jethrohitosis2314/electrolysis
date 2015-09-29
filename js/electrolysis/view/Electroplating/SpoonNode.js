@@ -6,6 +6,9 @@ define(function (require) {
     var SimpleDragHandler = require('SCENERY/input/SimpleDragHandler');
     var Shape = require('KITE/Shape');
     var Path = require('SCENERY/nodes/Path');
+    
+    var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+    var Text = require( 'SCENERY/nodes/Text' );
 
     var flaskImage = require('image!ELECTROLYSIS/spoon.svg');
 
@@ -36,6 +39,10 @@ define(function (require) {
             y: 0
         });
         this.addChild(image);
+
+        var name = new Node({x:-6, y: -2});
+        this.addChild(name);
+        name.addChild(new Text( model.name, { font: new PhetFont(9), fill: 'black' }));
 
         model.locationProperty.link(function (location) {
             this.translation = modelViewTransform.modelToViewPosition(location);

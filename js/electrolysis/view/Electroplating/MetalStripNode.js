@@ -4,6 +4,8 @@ define(function (require) {
     var inherit = require('PHET_CORE/inherit');
     var Rectangle = require('SCENERY/nodes/Rectangle');
     var SimpleDragHandler = require('SCENERY/input/SimpleDragHandler');
+    var PhetFont = require( 'SCENERY_PHET/PhetFont' );
+    var Text = require( 'SCENERY/nodes/Text' );
 
     function MetalStripNode(model, modelViewTransform, environment){
     	Node.call(this, {
@@ -12,6 +14,11 @@ define(function (require) {
         });
 
         this.accepts = model.accepts;
+
+        var name = new Node({x:-6, y: -2});
+        this.addChild(name);
+        name.addChild(new Text( model.name, { font: new PhetFont(9), fill: 'black' }));
+
 
         var rectangleNode = new Rectangle(
             0,

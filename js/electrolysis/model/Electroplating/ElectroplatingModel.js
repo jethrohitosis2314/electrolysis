@@ -13,28 +13,36 @@ define(function(require) {
     function ElectroplatingModel(environment) {
         PropertySet.call(this, {});
 
-        var water = new LiquidModel({name: "Water", color: 'cyan', conductor: false, location: new Vector2(60, 55)});
-        var saltWater = new LiquidModel({name: "Salt Water", color: '#ddd', conductor: true, location: new Vector2(100, 55)});
+        var copperSulhate = new LiquidModel({name: "Copper Sulhate", color: 'blue', conductor: true, location: new Vector2(70, 55)});
+        var silverNitrate = new LiquidModel({name: "Silver Nitrate", color: 'steelblue', conductor: true, location: new Vector2(160, 55)});
+        var goldCynide = new LiquidModel({name: "Gold Cynide", color: 'gold', conductor: true, location: new Vector2(30, 143)});
         var liquids = [
-            water,
-            saltWater
+            copperSulhate,
+            silverNitrate,
+            goldCynide
         ];
         var metalStrips = [
             new MetalStripModel({
-                name: 'copper',            
-                color: 'red', 
-                liquid: [saltWater], 
-                location: new Vector2(70, 135)
+                name: 'Copper',            
+                color: '#B87333', 
+                liquid: silverNitrate, 
+                location: new Vector2(100, 135)
             }),
              new MetalStripModel({
-                name: 'zinc',
-                color: 'blue', 
-                liquid: [water],
-                location: new Vector2(30, 135)
-            })
+                name: 'Silver',
+                color: 'silver', 
+                liquid: copperSulhate,
+                location: new Vector2(160, 135)
+            }),
+             new MetalStripModel({
+                name: 'Gold',
+                color: 'goldenrod',
+                liquid: goldCynide,
+                location: new Vector2(70, 224)
+             })
         ];
 
-        var spoonModel = new SpoonModel({name: "Water", color: 'cyan', conductor: false, location: new Vector2(90, 200)})
+        var spoonModel = new SpoonModel({name: 'Spoon', color: 'grey', conductor: false, location: new Vector2(120, 200)})
 
         var article = []
         this.rackModel = new RackModel(liquids, metalStrips, spoonModel);

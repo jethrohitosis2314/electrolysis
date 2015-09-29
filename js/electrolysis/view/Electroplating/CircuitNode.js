@@ -15,8 +15,8 @@ define(function(require) {
 
     function CircuitNode(model, modelViewTransform, environment) {
         Node.call(this, {
-            x: 0,
-            y: 5
+            x: 30,
+            y: 70
         });
 
         var beakerNode = new BeakerNode(model.beaker, modelViewTransform, environment);
