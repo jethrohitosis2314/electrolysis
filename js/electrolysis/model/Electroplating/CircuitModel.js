@@ -17,8 +17,8 @@ define(function(require) {
         this.beakerSize = new Dimension2(120, 80);
         this.beakerColor = 'Aqua';
 
-        this.anodeSlot = new ElectrodeSlotModel({location: new Vector2(199,322)});
-        this.cathodeSlot = new ElectrodeSlotModel({location:new Vector2(274,322), canHandle: ''});
+        this.anodeSlot = new ElectrodeSlotModel({location: new Vector2(199,322), terminal: 'positive'});
+        this.cathodeSlot = new ElectrodeSlotModel({location:new Vector2(274,322), terminal: 'negative'});
 
         this.checkCurrentFlow = function() {
             if(this.check() && this.beaker.electrolyte.conductor) {
@@ -43,12 +43,13 @@ define(function(require) {
             }
         }.bind(this);
 
-        this.check = function() {
-            return !this.open && this.beaker.electrolyte && this.anodeSlot.electrode && this.cathodeSlot.electrode;
+        var isValidElectrolyte = function(){
+            console.log(this.anodeSlot.electrode.liquid.name , this.beaker.electrolyte.name);
+            return this.anodeSlot.electrode.liquid == this.beaker.electrolyte;
         }.bind(this);
 
-        this.onReceiveDrop = function(liquid) {
-            this.electrolyteProperty.set(liquid);
+        this.check = function() {
+            return !this.open && this.beaker.electrolyte && this.anodeSlot.electrode && this.cathodeSlot.electrode && isValidElectrolyte();
         }.bind(this);
 
         this.openProperty.link(function() {

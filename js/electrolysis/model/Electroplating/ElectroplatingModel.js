@@ -25,24 +25,27 @@ define(function(require) {
             new MetalStripModel({
                 name: 'Copper',            
                 color: '#B87333', 
-                liquid: silverNitrate, 
-                location: new Vector2(100, 135)
+                liquid: copperSulhate, 
+                location: new Vector2(100, 135),
+                attachToTerminal: 'positive'
             }),
              new MetalStripModel({
                 name: 'Silver',
                 color: 'silver', 
-                liquid: copperSulhate,
-                location: new Vector2(160, 135)
+                liquid: silverNitrate,
+                location: new Vector2(160, 135),
+                attachToTerminal: 'positive'
             }),
              new MetalStripModel({
                 name: 'Gold',
                 color: 'goldenrod',
                 liquid: goldCynide,
-                location: new Vector2(70, 224)
+                location: new Vector2(70, 224),
+                attachToTerminal: 'positive'
              })
         ];
 
-        var spoonModel = new SpoonModel({name: 'Spoon', color: 'grey', conductor: false, location: new Vector2(120, 200)})
+        var spoonModel = new SpoonModel({name: 'Spoon', color: 'grey', conductor: false, location: new Vector2(120, 200),attachToTerminal: 'negative'})
 
         var article = []
         this.rackModel = new RackModel(liquids, metalStrips, spoonModel);

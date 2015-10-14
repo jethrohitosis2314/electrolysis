@@ -6,14 +6,15 @@ define(function(require) {
 		PropertySet.call(this,{
 			electrode: null,
 			color: '',
-			canHandle: ''
+			terminal: ''
 		});
 
 		this.location = option.location;
-		this.canHandle = option.canHandle;
+		this.terminal = option.terminal;
 		this.accepts = ['MetalStripModel', 'SpoonModel'];
 
 		this.onReceiveDrop = function(metalStrip){
+			if(this.terminal != metalStrip.attachToTerminal) return;
 			this.electrodeProperty.set(metalStrip);
 			this.colorProperty.set(metalStrip.color);
 		}.bind(this);

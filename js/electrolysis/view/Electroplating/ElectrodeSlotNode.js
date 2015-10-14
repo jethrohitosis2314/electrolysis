@@ -33,9 +33,11 @@ define(function(require) {
             lineWidth: 0
         });
 
-        var x1 = 7; var x2 = 16; var y1 = 1; var y2 = 10; var x3 = 8; var y3 = 20; var x4 = 15;
-        var x5 = 13; var x6 = 9; var y4 = 30; var y5 = 37; var x7 = 10; var x8 = 13; var y6 = 42;
-        var x9 = 21; var x10 = 2; var y7 = 49; var y8 = 57; var x11 = 15;
+        var x0 = -3;
+
+        var x1 = x0; var x2 = x0+9; var y1 = 1; var y2 = 10; var x3 = x0+1; var y3 = 20; var x4 = x0+9;
+        var x5 = x0+6; var x6 = x0+2; var y4 = 30; var y5 = 37; var x7 = x0+3; var x8 = x0+6; var y6 = 42;
+        var x9 = x0+14; var x10 = x0-5; var y7 = 49; var y8 = 57;
 
         var fillShape = new Shape()
                 .moveTo(x1, y1).lineTo(x2, y1).lineTo(x2, y2).lineTo(x4, y3).lineTo(x5, y4).lineTo(x8, y5)
@@ -50,7 +52,7 @@ define(function(require) {
         this.addChild(fillPath);
 
         var image = new Image(spoonImage, {
-            x: 0,
+            x: -10,
             y: 0,
             visible: false
         });

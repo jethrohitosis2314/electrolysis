@@ -4,7 +4,7 @@ define(function(require) {
     var Dimension2 = require('DOT/Dimension2');
 
 	function MetalStripModel(option){
-		PropertySet.call(this,_.extend({name: '', color: '', location: null, correctLiquid: null}, option));
+		PropertySet.call(this,_.extend({name: '', color: '', location: null, correctLiquid: null, attachToTerminal: ''}, option));
 		this.size = new Dimension2(10,35);
 	}
 

@@ -4,7 +4,7 @@ define(function(require) {
     var Dimension2 = require('DOT/Dimension2');
 
     function SpoonModel(options) {
-        PropertySet.call(this, _.extend({name: '', color: '', conductor: false, location: null}, options));
+        PropertySet.call(this, _.extend({name: '', color: '', conductor: false, location: null, attachToTerminal: ''}, options));
         this.size = new Dimension2(100,100);
     }
 
