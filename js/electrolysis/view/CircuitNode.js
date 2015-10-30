@@ -11,6 +11,7 @@ define(function(require) {
     var Dimension2 = require('DOT/Dimension2');
     var BeakerNode = require('ELECTROLYSIS/electrolysis/view/BeakerNode');
 
+    var ElectronNode = require('ELECTROLYSIS/electrolysis/view/ElectronNode');
     var circuitImage = require('image!ELECTROLYSIS/circuit.svg');
 
     function CircuitNode(model, modelViewTransform, environment) {
@@ -18,6 +19,14 @@ define(function(require) {
             x: 50,
             y: 100
         });
+
+        this.electronNodes = [];
+
+        model.electrons.forEach(function (electron){
+            var electronNode = new ElectronNode(electron.location, electron.direction);
+            this.addChild(electronNode);
+            this.electronNodes.push(electronNode);
+        }.bind(this));
 
         var beakerNode = new BeakerNode(model.beaker, modelViewTransform, environment);
         this.addChild(beakerNode);
@@ -56,6 +65,11 @@ define(function(require) {
         this.addChild(glow);
 
         model.bulbGlowsProperty.linkAttribute(glow, 'visible');
+        model.bulbGlowsProperty.link(function(glow){
+            this.electronNodes.forEach(function(ele){ 
+                ele.visible = glow;
+            }.bind(this))
+        }.bind(this));
 
         var image = new Image(circuitImage, {
             x: 0,

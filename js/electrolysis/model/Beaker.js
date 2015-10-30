@@ -8,19 +8,17 @@ define(function(require) {
         PropertySet.call(this, {
             electrolyte: null
         });
-
-        this.parent = options.parent;
         this.location = options.location;
         this.liquidFillLocation = options.liquidFillLocation;
         this.liquidFillSize = options.liquidFillSize;
         this.accepts = ['LiquidModel'];
 
-        this.electrolyteProperty.link(function() {
-            this.parent.checkCurrentFlow();
-        }.bind(this));
-
         this.onReceiveDrop = function(liquid) {
             this.electrolyteProperty.set(liquid);
+        }.bind(this);
+
+        this.setParent = function(parent) {
+            this.parent = parent;
         }.bind(this);
     }
 

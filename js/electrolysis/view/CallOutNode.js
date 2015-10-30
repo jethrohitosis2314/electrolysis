@@ -26,7 +26,8 @@ define(function(require) {
         this.addChild(textContainer);
 
         var text = null;
-        model.conductorProperty.link(function() {
+
+        this.updateText = function() {
             if (text) {
                 this.removeChild(text);
             }
@@ -39,6 +40,14 @@ define(function(require) {
             });
 
             this.addChild(text);
+        }.bind(this);
+
+        model.conductorProperty.link(function() {
+            this.updateText();
+        }.bind(this));
+
+        model.liquidNameProperty.link(function() {
+            this.updateText();
         }.bind(this));
     }
 

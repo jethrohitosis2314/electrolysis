@@ -9,6 +9,8 @@ define(function(require) {
     var CallOutModel = require('ELECTROLYSIS/electrolysis/model/CallOutModel');
     var LiquidModel = require('ELECTROLYSIS/electrolysis/model/LiquidModel');
     var Vector2 = require('DOT/Vector2');
+    var Beaker = require('ELECTROLYSIS/electrolysis/model/Beaker');
+    var Dimension2 = require('DOT/Dimension2');
 
     /**
      * @constructor
@@ -22,11 +24,19 @@ define(function(require) {
             new LiquidModel({name: "Salt Water", color: '#ddd', conductor: true, location: new Vector2(140, 55)})
         ];
 
-        this.circuitModel = new CircuitModel();
+        var beaker = new Beaker({
+            location: new Vector2(151,300),
+            liquidFillLocation: new Vector2(15, 30),
+            liquidFillSize: new Dimension2(150, 100)
+        });
+
+        this.circuitModel = new CircuitModel(beaker);
         this.rack = new RackModel(liquids);
         this.callOutModel = new CallOutModel();
         this.environment = environment;
-        
+
+        this.circuitModel.beaker.setParent(this.circuitModel);
+
         var callOut = function() {
             if (this.circuitModel.check()) {
                 this.callOutModel.visibleProperty.set(true);
@@ -35,7 +45,11 @@ define(function(require) {
             }
         }.bind(this);
 
-        this.circuitModel.beaker.electrolyteProperty.link(function(electrolyte) {
+        beaker.electrolyteProperty.link(function() {
+            this.circuitModel.checkCurrentFlow();
+        }.bind(this));
+
+        beaker.electrolyteProperty.link(function(electrolyte) {
             if (!electrolyte) return;
             this.callOutModel.liquidNameProperty.set(electrolyte.name);
             this.callOutModel.conductorProperty.set(electrolyte.conductor);
