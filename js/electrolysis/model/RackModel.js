@@ -11,6 +11,7 @@ define(function(require) {
         this.metalStrips = metalStrips;
         this.liquids = liquids;
         this.spoon = spoon;
+        this.type = 'RackModel';
     }
 
     return inherit(PropertySet, RackModel);

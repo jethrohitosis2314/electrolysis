@@ -1,5 +1,5 @@
 {
-  "comment": "# electrolysis 1.0.0-dev.1 Mon Dec 07 2015 12:20:33 GMT+0530 (IST)",
+  "comment": "# electrolysis 1.0.0-dev.1 Mon Dec 07 2015 12:27:07 GMT+0530 (IST)",
   "assert": {
     "sha": "3921bc3784dc67e9cbfa31cdec52b582fcfc68e7",
     "branch": "master"
@@ -21,7 +21,7 @@
     "branch": "master"
   },
   "electrolysis": {
-    "sha": "90864c5c52a555d26e50dfb142902e2cb8f132bd",
+    "sha": "a10e878049ad6d76af3c3c8f07bc24e283b9d405",
     "branch": "master"
   },
   "joist": {

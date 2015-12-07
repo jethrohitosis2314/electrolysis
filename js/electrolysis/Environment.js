@@ -15,11 +15,11 @@ define(function(require) {
                     }
                 }
             });
-        }
+        };
 
         var isValidDrop = function(model, droppable){
-            return droppable.accepts && droppable.accepts.indexOf(model.constructor.name)>-1 ;
-        }
+            return droppable.accepts && droppable.accepts.indexOf(model.type)>-1 ;
+        };
 
         var collides = function(bounds, droppable){
             return typeof droppable.collidesWith == "function" && droppable.collidesWith(bounds);

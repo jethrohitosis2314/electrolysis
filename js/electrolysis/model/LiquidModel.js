@@ -6,6 +6,7 @@ define(function(require) {
     function LiquidModel(options) {
         PropertySet.call(this, _.extend({name: '', color: '', conductor: false, location: null}, options));
         this.size = new Dimension2(100,100);
+        this.type = 'LiquidModel';
     }
 
     return inherit(PropertySet, LiquidModel);

@@ -72,7 +72,7 @@ define(function(require) {
             toggleSpoon(false);
             rectangle.visible = false;
             if(model.electrode) {
-                if(model.electrode.constructor.name === 'SpoonModel') {
+                if(model.electrode.type === 'SpoonModel') {
                     toggleSpoon(true);
                 } else {
                     rectangle.visible = true;

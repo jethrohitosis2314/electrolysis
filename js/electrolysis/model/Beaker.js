@@ -12,6 +12,7 @@ define(function(require) {
         this.liquidFillLocation = options.liquidFillLocation;
         this.liquidFillSize = options.liquidFillSize;
         this.accepts = ['LiquidModel'];
+        this.type = 'Beaker';
 
         this.onReceiveDrop = function(liquid) {
             this.electrolyteProperty.set(liquid);
