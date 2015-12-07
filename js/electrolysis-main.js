@@ -15,7 +15,7 @@ define(function(require) {
     var SimLauncher = require('JOIST/SimLauncher');
 
     // strings
-    var simTitle = require('string!ELECTROLYSIS/electrolysis.name');
+    var simTitle = require('string!ELECTROLYSIS/electrolysis.title');
 
     var simOptions = {
         credits: {

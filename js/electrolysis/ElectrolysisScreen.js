@@ -17,7 +17,7 @@ define(function(require) {
     var Environment = require('ELECTROLYSIS/electrolysis/Environment');
 
     // strings
-    var electrolysisSimString = require('string!ELECTROLYSIS/electrolysis.name');
+    var electrolysisSimString = require('string!ELECTROLYSIS/electrolysis.title');
 
     /**
      * @constructor

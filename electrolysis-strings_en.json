@@ -1,8 +1,8 @@
 {
-  "electrolysis.name": {
+  "electrolysis.title": {
     "value": "Electrolysis"
   },
-  "electroplating.name": {
+  "electroplating.title": {
     "value": "Electroplating"
   }
 }

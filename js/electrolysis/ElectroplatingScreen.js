@@ -9,7 +9,7 @@ define(function(require) {
     var epImage = require("image!ELECTROLYSIS/ep.png");
     var Environment = require('ELECTROLYSIS/electrolysis/Environment');
 
-    var electrolysisSimString = require('string!ELECTROLYSIS/electroplating.name');
+    var electrolysisSimString = require('string!ELECTROLYSIS/electroplating.title');
 
     function ElectroplatingScreen() {
         var icon = new Image(epImage);
