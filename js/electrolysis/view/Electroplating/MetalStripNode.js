@@ -1,5 +1,6 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function (require) {
-
+    'use strict';
     var Node = require('SCENERY/nodes/Node');
     var inherit = require('PHET_CORE/inherit');
     var Rectangle = require('SCENERY/nodes/Rectangle');
@@ -8,7 +9,7 @@ define(function (require) {
     var Text = require( 'SCENERY/nodes/Text' );
 
     function MetalStripNode(model, modelViewTransform, environment){
-    	Node.call(this, {
+        Node.call(this, {
             x: model.location.x,
             y: model.location.y
         });

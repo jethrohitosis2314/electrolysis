@@ -1,4 +1,6 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
+    'use strict';
     var PropertySet = require('AXON/PropertySet');
     var inherit = require('PHET_CORE/inherit');
     var Vector2 = require('DOT/Vector2');
@@ -31,7 +33,7 @@ define(function(require) {
             {location : new Vector2(370,263), direction : 'RIGHT'},
             {location : new Vector2(40,263), direction : 'RIGHT'},
             {location : new Vector2(160,263), direction : 'RIGHT'},
-            {location : new Vector2(-7,170), direction : 'DOWN'},
+            {location : new Vector2(-7,170), direction : 'DOWN'}
         ];
     }
 

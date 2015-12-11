@@ -1,3 +1,4 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
     'use strict';
 
@@ -13,9 +14,9 @@ define(function(require) {
     function ElectroplatingModel(environment) {
         PropertySet.call(this, {});
 
-        var copperSulhate = new LiquidModel({name: "Copper Sulhate", color: 'blue', conductor: true, location: new Vector2(70, 55)});
-        var silverNitrate = new LiquidModel({name: "Silver Nitrate", color: 'steelblue', conductor: true, location: new Vector2(160, 55)});
-        var goldCynide = new LiquidModel({name: "Gold Cynide", color: 'gold', conductor: true, location: new Vector2(30, 143)});
+        var copperSulhate = new LiquidModel({name: 'Copper Sulhate', color: 'blue', conductor: true, location: new Vector2(70, 55)});
+        var silverNitrate = new LiquidModel({name: 'Silver Nitrate', color: 'steelblue', conductor: true, location: new Vector2(160, 55)});
+        var goldCynide = new LiquidModel({name: 'Gold Cynide', color: 'gold', conductor: true, location: new Vector2(30, 143)});
         var liquids = [
             copperSulhate,
             silverNitrate,
@@ -45,9 +46,8 @@ define(function(require) {
              })
         ];
 
-        var spoonModel = new SpoonModel({name: 'Spoon', color: 'grey', conductor: false, location: new Vector2(120, 200),attachToTerminal: 'negative'})
+        var spoonModel = new SpoonModel({name: 'Spoon', color: 'grey', conductor: false, location: new Vector2(120, 200),attachToTerminal: 'negative'});
 
-        var article = []
         this.rackModel = new RackModel(liquids, metalStrips, spoonModel);
         this.circuitModel = new CircuitModel();
         this.environment = environment;

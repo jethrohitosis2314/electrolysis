@@ -1,9 +1,9 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
-
+    'use strict';
     var Node = require('SCENERY/nodes/Node');
     var inherit = require('PHET_CORE/inherit');
     var Image = require('SCENERY/nodes/Image');
-    var Vector2 = require('DOT/Vector2');
     var PhetFont = require( 'SCENERY_PHET/PhetFont' );
     var Text = require( 'SCENERY/nodes/Text' );
     var Circle = require('SCENERY/nodes/Circle');
@@ -35,7 +35,7 @@ define(function(require) {
             electronImage = leftArrow;
             break;
 
-        };
+        }
 
         var image = new Image(electronImage, {
             x: 10,
@@ -53,7 +53,7 @@ define(function(require) {
             cursor: 'pointer',
             lineWidth: 9
         });
-        this.addChild(key)
+        this.addChild(key);
 
         var name = new Node({x:-100, y: 70});
         this.addChild(name);

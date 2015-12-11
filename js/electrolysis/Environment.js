@@ -1,6 +1,6 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
-
-
+    'use strict';
     function Environment() {
         this.droppables = [];
         this.addDroppable = function(node) {
@@ -22,8 +22,8 @@ define(function(require) {
         };
 
         var collides = function(bounds, droppable){
-            return typeof droppable.collidesWith == "function" && droppable.collidesWith(bounds);
-        }
+            return typeof droppable.collidesWith === 'function' && droppable.collidesWith(bounds);
+        };
     }
     return Environment;
 });

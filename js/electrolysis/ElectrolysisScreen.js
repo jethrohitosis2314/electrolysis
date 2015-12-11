@@ -13,11 +13,11 @@ define(function(require) {
     var inherit = require('PHET_CORE/inherit');
     var Screen = require('JOIST/Screen');
     var Image = require('SCENERY/nodes/Image');
-    var elImage = require("image!ELECTROLYSIS/el.png");
+    var elImage = require('image!ELECTROLYSIS/el.png');
     var Environment = require('ELECTROLYSIS/electrolysis/Environment');
 
     // strings
-    var electrolysisSimString = require('string!ELECTROLYSIS/electrolysis.title');
+    var electrolysisTitleString = require('string!ELECTROLYSIS/electrolysis.title');
 
     /**
      * @constructor
@@ -28,11 +28,9 @@ define(function(require) {
         //If there are multiple screens, then the icon must be provided here.
         var icon = new Image(elImage);
         var environment = new Environment();
-        window.ES = {};
-        ES.model = new ElectrolysisModel(environment);
-        Screen.call(this, electrolysisSimString, icon,
+        Screen.call(this, electrolysisTitleString, icon,
             function() {
-                return ES.model;
+                return new ElectrolysisModel(environment);
             },
             function(model) {
                 return new ElectrolysisScreenView(model);

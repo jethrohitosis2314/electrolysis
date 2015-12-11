@@ -1,5 +1,6 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
-
+    'use strict';
     var Node = require('SCENERY/nodes/Node');
     var inherit = require('PHET_CORE/inherit');
     var Rectangle = require('SCENERY/nodes/Rectangle');
@@ -32,7 +33,7 @@ define(function(require) {
                 this.removeChild(text);
             }
 
-            text = new Text(model.liquidName + " is" + (!model.conductor ? " not" : "") + " a conductor", {
+            text = new Text(model.liquidName + ' is' + (!model.conductor ? ' not' : '') + ' a conductor', {
                 font: new PhetFont(model.fontSize),
                 fill: model.fontColor,
                 x: 10,

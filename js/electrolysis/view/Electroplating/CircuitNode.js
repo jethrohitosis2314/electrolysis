@@ -1,5 +1,6 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
-
+    'use strict';
     var Node = require('SCENERY/nodes/Node');
     var inherit = require('PHET_CORE/inherit');
     var Image = require('SCENERY/nodes/Image');
@@ -7,7 +8,6 @@ define(function(require) {
     var Circle = require('SCENERY/nodes/Circle');
     var DownUpListener = require('SCENERY/input/DownUpListener');
     var RadialGradient = require('SCENERY/util/RadialGradient');
-    var BeakerModel = require('ELECTROLYSIS/electrolysis/model/Beaker');
     var BeakerNode = require('ELECTROLYSIS/electrolysis/view/BeakerNode');
     var ElectrodeSlotNode = require('ELECTROLYSIS/electrolysis/view/Electroplating/ElectrodeSlotNode');
 

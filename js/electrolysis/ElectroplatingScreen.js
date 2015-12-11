@@ -1,3 +1,4 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
     'use strict';
 
@@ -6,21 +7,19 @@ define(function(require) {
     var inherit = require('PHET_CORE/inherit');
     var Screen = require('JOIST/Screen');
     var Image = require('SCENERY/nodes/Image');
-    var epImage = require("image!ELECTROLYSIS/ep.png");
+    var epImage = require('image!ELECTROLYSIS/ep.png');
     var Environment = require('ELECTROLYSIS/electrolysis/Environment');
 
-    var electrolysisSimString = require('string!ELECTROLYSIS/electroplating.title');
+    var electroplatingTitleString = require('string!ELECTROLYSIS/electroplating.title');
 
     function ElectroplatingScreen() {
         var icon = new Image(epImage);
 
-        window.EP = {};
-        
         var environment = new Environment();
-        EP.model = new ElectroplatingModel(environment);
-        Screen.call(this, electrolysisSimString, icon,
+
+        Screen.call(this, electroplatingTitleString, icon,
             function() {
-                return EP.model;
+                return new ElectroplatingModel(environment);
             },
             function(model) {
                 return new ElectroplatingScreenView(model);

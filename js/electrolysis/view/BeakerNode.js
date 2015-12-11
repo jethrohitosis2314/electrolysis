@@ -1,14 +1,11 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
-
+    'use strict';
     var Node = require('SCENERY/nodes/Node');
     var inherit = require('PHET_CORE/inherit');
     var Image = require('SCENERY/nodes/Image');
     var Rectangle = require('SCENERY/nodes/Rectangle');
-    var Circle = require('SCENERY/nodes/Circle');
-    var DownUpListener = require('SCENERY/input/DownUpListener');
-    var RadialGradient = require('SCENERY/util/RadialGradient');
     var Vector2 = require('DOT/Vector2');
-    var Dimension2 = require('DOT/Dimension2');
 
     var beakerImage = require('image!ELECTROLYSIS/beaker.svg');
 

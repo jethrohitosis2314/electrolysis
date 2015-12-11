@@ -1,8 +1,8 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
+    'use strict';
     var PropertySet = require('AXON/PropertySet');
     var inherit = require('PHET_CORE/inherit');
-    var Dimension2 = require('DOT/Dimension2');
-    var Vector2 = require('DOT/Vector2');
 
     function Beaker(options) {
         PropertySet.call(this, {

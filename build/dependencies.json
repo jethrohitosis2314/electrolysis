@@ -1,5 +1,5 @@
 {
-  "comment": "# electrolysis 1.0.0-dev.1 Mon Dec 07 2015 12:27:07 GMT+0530 (IST)",
+  "comment": "# electrolysis 1.0.0-dev.1 Fri Dec 11 2015 16:04:53 GMT+0530 (IST)",
   "assert": {
     "sha": "3921bc3784dc67e9cbfa31cdec52b582fcfc68e7",
     "branch": "master"
@@ -13,7 +13,7 @@
     "branch": "master"
   },
   "chipper": {
-    "sha": "de506b83a494c1879b0471aafeb1f45117b83379",
+    "sha": "d18a2538e68fff26d80d6e0cfa2beca4b032dc79",
     "branch": "master"
   },
   "dot": {
@@ -21,7 +21,7 @@
     "branch": "master"
   },
   "electrolysis": {
-    "sha": "a10e878049ad6d76af3c3c8f07bc24e283b9d405",
+    "sha": "dd30dd9fac168c868d627341de76a67d02856ef8",
     "branch": "master"
   },
   "joist": {

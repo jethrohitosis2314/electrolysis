@@ -1,5 +1,6 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require) {
-
+    'use strict';
     var Node = require('SCENERY/nodes/Node');
     var inherit = require('PHET_CORE/inherit');
     var Circle = require('SCENERY/nodes/Circle');
@@ -11,7 +12,7 @@ define(function(require) {
     var Image = require('SCENERY/nodes/Image');
 
     function ElectrodeSlotNode(model, environment){
-    	Node.call(this, {
+        Node.call(this, {
             x: model.location.x,
             y: model.location.y,
             visible: true
@@ -23,7 +24,7 @@ define(function(require) {
             y: 0,
             fill: '',
             cursor: 'pointer',
-            stroke: '',
+            stroke: ''
         });
 
         this.addChild(key);
@@ -78,7 +79,7 @@ define(function(require) {
                     rectangle.visible = true;
                 }
             }
-        }
+        };
         this.addChild(rectangle);
 
         model.electrodeProperty.link(function(electrode){

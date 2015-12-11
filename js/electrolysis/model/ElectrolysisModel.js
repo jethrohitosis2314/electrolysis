@@ -1,4 +1,5 @@
-define(function(require) {
+// Copyright 2002-2015, University of Colorado Boulder
+define(function (require) {
     'use strict';
 
     // modules
@@ -19,13 +20,13 @@ define(function(require) {
         PropertySet.call(this, {});
 
         var liquids = [
-            new LiquidModel({name: "Copper Sulhate", color: 'blue', conductor: true, location: new Vector2(30, 143)}),
-            new LiquidModel({name: "Distilled Water", color: 'cyan', conductor: false, location: new Vector2(60, 55)}),
-            new LiquidModel({name: "Salt Water", color: '#ddd', conductor: true, location: new Vector2(140, 55)})
+            new LiquidModel({name: 'Copper Sulhate', color: 'blue', conductor: true, location: new Vector2(30, 143)}),
+            new LiquidModel({name: 'Distilled Water', color: 'cyan', conductor: false, location: new Vector2(60, 55)}),
+            new LiquidModel({name: 'Salt Water', color: '#ddd', conductor: true, location: new Vector2(140, 55)})
         ];
 
         var beaker = new Beaker({
-            location: new Vector2(151,300),
+            location: new Vector2(151, 300),
             liquidFillLocation: new Vector2(15, 30),
             liquidFillSize: new Dimension2(150, 100)
         });
@@ -37,7 +38,7 @@ define(function(require) {
 
         this.circuitModel.beaker.setParent(this.circuitModel);
 
-        var callOut = function() {
+        var callOut = function () {
             if (this.circuitModel.check()) {
                 this.callOutModel.visibleProperty.set(true);
             } else {
@@ -45,28 +46,30 @@ define(function(require) {
             }
         }.bind(this);
 
-        beaker.electrolyteProperty.link(function() {
+        beaker.electrolyteProperty.link(function () {
             this.circuitModel.checkCurrentFlow();
         }.bind(this));
 
-        beaker.electrolyteProperty.link(function(electrolyte) {
-            if (!electrolyte) return;
+        beaker.electrolyteProperty.link(function (electrolyte) {
+            if (!electrolyte) {
+                return;
+            }
             this.callOutModel.liquidNameProperty.set(electrolyte.name);
             this.callOutModel.conductorProperty.set(electrolyte.conductor);
             callOut();
         }.bind(this));
 
-        this.circuitModel.switchedOnProperty.link(function(on) {
+        this.circuitModel.switchedOnProperty.link(function (on) {
             callOut();
         }.bind(this));
 
-        
+
     }
 
     return inherit(PropertySet, ElectrolysisModel, {
 
         //TODO Called by the animation loop. Optional, so if your model has no animation, please delete this.
-        step: function(dt) {
+        step: function (dt) {
             //TODO Handle model animation here.
         }
     });

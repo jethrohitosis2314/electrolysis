@@ -1,5 +1,6 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function (require) {
-
+    'use strict';
     var Node = require('SCENERY/nodes/Node');
     var inherit = require('PHET_CORE/inherit');
     var Image = require('SCENERY/nodes/Image');
@@ -20,7 +21,7 @@ define(function (require) {
 
         var x1 = 7; var x2 = 16; var y1 = 1; var y2 = 10; var x3 = 8; var y3 = 20; var x4 = 15;
         var x5 = 13; var x6 = 9; var y4 = 30; var y5 = 37; var x7 = 10; var x8 = 13; var y6 = 42;
-        var x9 = 21; var x10 = 2; var y7 = 49; var y8 = 57; var x11 = 15;
+        var x9 = 21; var x10 = 2; var y7 = 49; var y8 = 57;
 
         var fillShape = new Shape()
                 .moveTo(x1, y1).lineTo(x2, y1).lineTo(x2, y2).lineTo(x4, y3).lineTo(x5, y4).lineTo(x8, y5)

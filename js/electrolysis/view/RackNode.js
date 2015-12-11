@@ -1,5 +1,6 @@
+// Copyright 2002-2015, University of Colorado Boulder
 define(function(require){
-
+    'use strict';
     var Node = require('SCENERY/nodes/Node');
     var inherit = require('PHET_CORE/inherit');
     var Image = require('SCENERY/nodes/Image');
@@ -21,14 +22,14 @@ define(function(require){
             this.addChild(liquidNode);
         }.bind(this));
 
-        if(typeof model.metalStrips !== "undefined"){
+        if(typeof model.metalStrips !== 'undefined'){
             model.metalStrips.forEach(function(metal){
                 var metalStripNode = new MetalStripNode(metal, modelViewTransform, environment);
                 this.addChild(metalStripNode);
             }.bind(this));
         }
 
-        if(typeof model.spoon !== "undefined"){
+        if(typeof model.spoon !== 'undefined'){
             var spoonNode = new SpoonNode(model.spoon, modelViewTransform, environment);
             this.addChild(spoonNode);
         }
